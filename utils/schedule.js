@@ -8,6 +8,7 @@ const TWO_HOURS = 2 * 60 * 60 * 1000;
 const scheduleCoinFetch = async (coin, nextFetchTime) => {
   schedule.scheduleJob(nextFetchTime, async () => {
     console.log(`Scheduled fetch started for ${coin}...`);
+    const now = new Date();
     const data = await fetchCoinData(coin);
     if (data) {
       await curData.create({
